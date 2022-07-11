@@ -4,8 +4,11 @@ metadata:
   name: egate-service
 spec:
   selector:
-    app: egate
+    app: egate 
+  type: NodePort
   ports:
-  - port: 80
+  - name: nginx
     protocol: TCP
+    port: 80
     targetPort: 80
+    nodePort: 30000
