@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: egate
+  name: egate-dev
 spec:
   selector:
     matchLabels:
-      app: egate
-  replicas: 4
+      app: egate-dev
+  replicas: 2
   template:
     metadata:
       labels:
-        app: egate
+        app: egate-dev
     spec:
       imagePullSecrets:
       - name: regcred

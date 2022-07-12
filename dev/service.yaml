@@ -1,14 +1,14 @@
-apiVersion: v1
-kind: Service
-metadata:
-  name: egate-service
-spec:
-  selector:
-    app: egate 
-  type: NodePort
-  ports:
-  - name: nginx
-    protocol: TCP
-    port: 80
-    targetPort: 80
-    nodePort: 30000
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: egate-dev-service
+# spec:
+#   selector:
+#     app: egate-dev
+#   type: NodePort
+#   ports:
+#   - name: nginx
+#     protocol: TCP
+#     port: 80
+#     targetPort: 80
+#     nodePort: 30000
