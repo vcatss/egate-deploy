@@ -15,11 +15,10 @@ metadata:
   name: egate-service-ingress
 spec:
   entryPoints:
-    
   routes:
   - kind: Rule
-    match: Host(`test.e-gate.vn`) # [3]
-    priority: 10                    # [4]
+    match: Host(`test.e-gate.vn`)
+    priority: 10
     services:
     - name: egate-service
       port: 80
