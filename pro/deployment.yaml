@@ -2,28 +2,32 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: egate
+  labels:
+    app: egate
 spec:
+  replicas: 1
   selector:
     matchLabels:
       app: egate
-  replicas: 1
   template:
     metadata:
       labels:
         app: egate
     spec:
       imagePullSecrets:
-      - name: regcred
+        - name: regcred
       containers:
-      - name: node
-        #image: vcats/egate-api:1.1.4
-        image: nginx
-        # env: 
-        #   - name: MONGOURI
-        #     value: "mongodb://admin:123asdCat@mongo-0.mongo:27017,mongo-1.mongo:27017/fintestsystem?authSource=fintestsystem&readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false"
-        resources:
-          limits:
-            memory: "100Mi"
-            cpu: "100m"
+      - name: nginx
+        image: vcats/egate-api:1.1.4
+        env: 
+          - name: MONGOURI
+            value: "mongodb://admin:123asdCat@mongo-0.mongo:27017,mongo-1.mongo:27017/fintestsystem?authSource=fintestsystem&readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false"
         ports:
-          - containerPort: 80
+        - containerPort: 10006
+        volumeMounts:
+        - name: egate-volume
+          mountPath: /usr/share/egate/api
+      volumes:
+      - name: egate-volume
+        # configMap:
+        #   name: mysite-html

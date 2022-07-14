@@ -1,47 +1,52 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mysite-nginx
+  name: egate
   labels:
-    app: mysite-nginx
+    app: egate
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: mysite-nginx
+      app: egate
   template:
     metadata:
       labels:
-        app: mysite-nginx
+        app: egate
     spec:
+      imagePullSecrets:
+        - name: regcred
       containers:
       - name: nginx
-        image: nginx
+        image: vcats/egate-api:1.1.4
+        env: 
+          - name: MONGOURI
+            value: "mongodb://admin:123asdCat@mongo-0.mongo:27017,mongo-1.mongo:27017/fintestsystem?authSource=fintestsystem&readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false"
         ports:
-        - containerPort: 80
+        - containerPort: 10006
         volumeMounts:
-        - name: html-volume
-          mountPath: /usr/share/nginx/html
+        - name: egate-volume
+          mountPath: /usr/share/egate/api
       volumes:
-      - name: html-volume
-        configMap:
-          name: mysite-html
+      - name: egate-volume
+        # configMap:
+        #   name: mysite-html
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: mysite-nginx-service
+  name: egate-service
 spec:
   selector:
-    app: mysite-nginx
+    app: egate
   ports:
     - protocol: TCP
-      port: 80
+      port: 10006
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: mysite-nginx-ingress
+  name: egate-ingress
 spec:
   entryPoints:
     
@@ -50,5 +55,5 @@ spec:
     match: Host(`test.e-gate.vn`) # [3]
     priority: 10                    # [4]
     services:
-    - name: mysite-nginx-service
-      port: 80
+    - name: egate-service
+      port: 10006
