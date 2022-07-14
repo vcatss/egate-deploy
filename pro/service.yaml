@@ -1,24 +1,24 @@
-# apiVersion: v1
-# kind: Service
-# metadata:
-#   name: egate-service
-# spec:
-#   selector:
-#     app: egate 
-#   ports:
-#     protocol: TCP
-#     port: 80
-# ---
-# apiVersion: traefik.containo.us/v1alpha1
-# kind: IngressRoute
-# metadata:
-#   name: egate-service-ingress
-# spec:
-#   entryPoints:
-#   routes:
-#   - kind: Rule
-#     match: Host(`test.e-gate.vn`)
-#     priority: 10
-#     services:
-#     - name: egate-service
-#       port: 80
+apiVersion: v1
+kind: Service
+metadata:
+  name: egate-service
+spec:
+  selector:
+    app: egate 
+  ports:
+    protocol: TCP
+    port: 80
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: egate-service-ingress
+spec:
+  entryPoints:
+  routes:
+  - kind: Rule
+    match: Host(`test.e-gate.vn`)
+    priority: 10
+    services:
+    - name: egate-service
+      port: 80
