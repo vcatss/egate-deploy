@@ -18,9 +18,9 @@ spec:
       - name: node
         #image: vcats/egate-api:1.1.4
         image: nginx
-        env: 
-          - name: MONGOURI
-            value: "mongodb://admin:123asdCat@mongo-0.mongo:27017,mongo-1.mongo:27017/fintestsystem?authSource=fintestsystem&readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false"
+        # env: 
+        #   - name: MONGOURI
+        #     value: "mongodb://admin:123asdCat@mongo-0.mongo:27017,mongo-1.mongo:27017/fintestsystem?authSource=fintestsystem&readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false"
         resources:
           limits:
             memory: "100Mi"
