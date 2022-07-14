@@ -12,7 +12,7 @@ spec:
     path: pro
   destination: 
     server: https://kubernetes.default.svc
-    namespace: egate
+    namespace: default
 
   syncPolicy:
     syncOptions:
