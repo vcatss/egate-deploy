@@ -18,7 +18,7 @@ spec:
     
   routes:
   - kind: Rule
-    match: Host(`test.e-gate.vn`) # [3]
+    match: Host(`api.e-gate.vn`) # [3]
     priority: 10                    # [4]
     services:
     - name: egate-service
