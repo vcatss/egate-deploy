@@ -36,10 +36,10 @@ spec:
     services:
     - name: egate-service
       port: 10006
-  - kind: Rule
-    match: Host(`admin.e-gate.vn`) # [3]
-    priority: 10                    # [4]
-    services:
-    - name: egate-service
-      port: 3000
+  # - kind: Rule
+  #   match: Host(`admin.e-gate.vn`) # [3]
+  #   priority: 10                    # [4]
+  #   services:
+  #   - name: egate-service
+  #     port: 3000
 
