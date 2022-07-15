@@ -21,7 +21,7 @@ spec:
       - name: regcred
       containers:
       - name: admin
-        image: vcats/egate-admin:1.0.5
+        image: vcats/egate-socket:1.0.1
         #image: nginx
         resources:
           limits:
@@ -29,12 +29,10 @@ spec:
             cpu: "100m"
         ports:
           - containerPort: 3000
-        # command: ["/bin/sh"]
-        args: ["npm run start"]
       # - name: mongo
       #   image: mongo
-      #   command: ["/bin/sh"]
-      #   args: ["-c", "mongod --replSet=rs0 --bind_ip_all"]
+        command: ["/bin/sh"]
+        args: ["-c", "npm run start"]
       #   env:
       #     - name: MONGO_INITDB_ROOT_USERNAME
       #       value: "admin"

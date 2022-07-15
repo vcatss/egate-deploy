@@ -65,3 +65,37 @@ spec:
         - name: egate-volume
         # configMap:
         #   name: mysite-html
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: egate-socket
+  labels:
+    app: egate-socket
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: egate-socket
+  template:
+    metadata:
+      labels:
+        app: egate-socket
+    spec:
+      imagePullSecrets:
+        - name: regcred
+      containers:
+      - name: socket
+        image: vcats/egate-socket:1.0.1
+        env: 
+          - name: BASEURI
+            value: "https://socket.e-gate.vn"
+        ports:
+        - containerPort: 3000
+        volumeMounts:
+        - name: egate-volume
+          mountPath: /usr/share/egate/socket
+      volumes:
+        - name: egate-volume
+        # configMap:
+        #   name: mysite-html
