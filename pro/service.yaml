@@ -6,8 +6,21 @@ spec:
   selector:
     app: egate
   ports:
-    - protocol: TCP
+    - name: api
+      protocol: TCP
       port: 10006
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: egate-admin-service
+spec:
+  selector:
+    app: egate-admin
+  ports:
+    - name: admin
+      protocol: TCP
+      port: 3000
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
@@ -23,3 +36,10 @@ spec:
     services:
     - name: egate-service
       port: 10006
+  - kind: Rule
+    match: Host(`admin.e-gate.vn`) # [3]
+    priority: 10                    # [4]
+    services:
+    - name: egate-service
+      port: 3000
+

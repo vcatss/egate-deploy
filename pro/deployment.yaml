@@ -31,3 +31,37 @@ spec:
       - name: egate-volume
         # configMap:
         #   name: mysite-html
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: egate-admin
+  labels:
+    app: egate-admin
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: egate-admin
+  template:
+    metadata:
+      labels:
+        app: egate-admin
+    spec:
+      imagePullSecrets:
+        - name: regcred
+      containers:
+      - name: nginx
+        image: vcats/egate-admin:1.0.0
+        # env: 
+        #   - name: MONGOURI
+        #     value: "mongodb://admin:123asdCat@mongo-0.mongo:27017,mongo-1.mongo:27017/fintestsystem?authSource=fintestsystem&readPreference=primary&replicaSet=rs0"
+        ports:
+        - containerPort: 3000
+        volumeMounts:
+        - name: egate-volume
+          mountPath: /usr/share/egate/admin
+      # volumes:
+      #   - name: egate-volume
+        # configMap:
+        #   name: mysite-html
