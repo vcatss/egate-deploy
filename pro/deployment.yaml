@@ -18,7 +18,7 @@ spec:
         - name: regcred
       containers:
       - name: api
-        image: vcats/egate-api:1.1.4
+        image: vcats/egate-api:1.1.5
         env: 
           - name: MONGOURI
             value: "mongodb://admin:123asdCat@mongo-0.mongo:27017,mongo-1.mongo:27017/fintestsystem?authSource=fintestsystem&readPreference=primary&replicaSet=rs0"
