@@ -61,7 +61,7 @@ spec:
         volumeMounts:
         - name: egate-volume
           mountPath: /usr/share/egate/admin
-      # volumes:
-      #   - name: egate-volume
+      volumes:
+        - name: egate-volume
         # configMap:
         #   name: mysite-html
