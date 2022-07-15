@@ -52,7 +52,7 @@ spec:
         - name: regcred
       containers:
       - name: admin
-        image: vcats/egate-admin:1.0.8
+        image: vcats/egate-admin:1.0.9
         env: 
           - name: BASEURI
             value: "https://api.e-gate.vn"
