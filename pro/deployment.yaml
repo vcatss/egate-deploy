@@ -129,7 +129,7 @@ spec:
           - name: BASEURI
             value: "https://e-gate.vn"
         ports:
-        - containerPort: 3000
+        - containerPort: 15000
         volumeMounts:
         - name: egate-volume
           mountPath: /usr/share/egate/homepage
