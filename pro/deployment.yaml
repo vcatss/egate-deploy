@@ -5,7 +5,7 @@ metadata:
   labels:
     app: egate
 spec:
-  replicas: 4
+  replicas: 3
   selector:
     matchLabels:
       app: egate
@@ -18,7 +18,7 @@ spec:
         - name: regcred
       containers:
       - name: api
-        image: vcats/egate-api:1.1.7
+        image: vcats/egate-api:1.1.5
         resources:
           limits:
             memory: "500Mi"
