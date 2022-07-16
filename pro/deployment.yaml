@@ -19,14 +19,18 @@ spec:
       containers:
       - name: api
         image: vcats/egate-api:1.1.5
+        resources:
+          limits:
+            memory: "200Mi"
+            cpu: "200m"
         env: 
           - name: MONGOURI
             value: "mongodb://admin:123asdCat@mongo-0.mongo:27017,mongo-1.mongo:27017/fintestsystem?authSource=fintestsystem&readPreference=primary&replicaSet=rs0"
         ports:
-        - containerPort: 10006
+          - containerPort: 10006
         volumeMounts:
-        - name: egate-volume
-          mountPath: /usr/share/egate/api
+          - name: egate-volume
+            mountPath: /usr/share/egate/api
       volumes:
       - name: egate-volume
         # configMap:
