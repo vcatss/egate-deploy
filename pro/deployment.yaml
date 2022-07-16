@@ -103,3 +103,37 @@ spec:
         - name: egate-volume
         # configMap:
         #   name: mysite-html
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: egate-homepage
+  labels:
+    app: egate-homepage
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: egate-homepage
+  template:
+    metadata:
+      labels:
+        app: egate-homepage
+    spec:
+      imagePullSecrets:
+        - name: regcred
+      containers:
+      - name: homepage
+        image: vcats/egate-homepage:1.0.0
+        env: 
+          - name: BASEURI
+            value: "https://e-gate.vn"
+        ports:
+        - containerPort: 3000
+        volumeMounts:
+        - name: egate-volume
+          mountPath: /usr/share/egate/homepage
+      volumes:
+        - name: egate-volume
+        # configMap:
+        #   name: mysite-html
