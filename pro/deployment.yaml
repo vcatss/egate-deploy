@@ -27,7 +27,7 @@ spec:
           - name: MONGOURI
             value: "mongodb://admin:123asdCat@mongo-0.mongo:27017,mongo-1.mongo:27017/fintestsystem?authSource=fintestsystem&readPreference=primary&replicaSet=rs0"
         ports:
-          - containerPort: 10006
+          - containerPort: 3000
         volumeMounts:
           - name: egate-volume
             mountPath: /usr/share/egate/api
