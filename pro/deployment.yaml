@@ -5,7 +5,7 @@ metadata:
   labels:
     app: egate
 spec:
-  replicas: 5
+  replicas: 3
   selector:
     matchLabels:
       app: egate
@@ -56,7 +56,7 @@ spec:
         - name: regcred
       containers:
       - name: admin
-        image: vcats/egate-admin:1.0.9
+        image: vcats/egate-admin:1.1.1
         env: 
           - name: BASEAPI
             value: "https://api.e-gate.vn"
