@@ -18,7 +18,7 @@ spec:
         - name: regcred
       containers:
       - name: api
-        image: vcats/egate-api:1.1.9
+        image: vcats/egate-api:1.2.0
         resources:
           limits:
             memory: "500Mi"
