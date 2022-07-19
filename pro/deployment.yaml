@@ -5,7 +5,11 @@ metadata:
   labels:
     app: egate
 spec:
+<<<<<<< HEAD
   replicas: 5
+=======
+  replicas: 3
+>>>>>>> 25f955f09a7cd62e41a1f61656cef96de95d513c
   selector:
     matchLabels:
       app: egate
@@ -18,7 +22,7 @@ spec:
         - name: regcred
       containers:
       - name: api
-        image: vcats/egate-api:1.2.1
+        image: vcats/egate-api:1.2.5
         resources:
           limits:
             memory: "500Mi"
@@ -27,7 +31,7 @@ spec:
           - name: MONGOURI
             value: "mongodb://admin:123asdCat@mongo-0.mongo:27017,mongo-1.mongo:27017/fintestsystem?authSource=fintestsystem&readPreference=primary&replicaSet=rs0"
         ports:
-          - containerPort: 10006
+          - containerPort: 3000
         volumeMounts:
           - name: egate-volume
             mountPath: /usr/share/egate/api
