@@ -5,11 +5,7 @@ metadata:
   labels:
     app: egate
 spec:
-<<<<<<< HEAD
-  replicas: 5
-=======
-  replicas: 3
->>>>>>> 25f955f09a7cd62e41a1f61656cef96de95d513c
+  replicas: 2
   selector:
     matchLabels:
       app: egate
