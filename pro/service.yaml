@@ -55,19 +55,19 @@ spec:
     
   routes:
   - kind: Rule
-    match: Host(`api.e-gate.vn`) # [3]
+    match: Host(`api.e-gate.vn`)    # [3]
     priority: 10                    # [4]
     services:
     - name: egate-service
       port: 3000
   - kind: Rule
     match: Host(`sys-api.e-gate.vn`) # [3]
-    priority: 10                    # [4]
+    priority: 10                     # [4]
     services:
     - name: egate-service
       port: 3000
   - kind: Rule
-    match: Host(`admin.e-gate.vn`) # [3]
+    match: Host(`admin.e-gate.vn`)  # [3]
     priority: 10                    # [4]
     services:
     - name: egate-admin-service
@@ -79,7 +79,7 @@ spec:
     - name: egate-socket-service
       port: 3000
   - kind: Rule
-    match: Host(`e-gate.vn`) # [3]
+    match: Host(`e-gate.vn`)        # [3]
     priority: 10                    # [4]
     services:
     - name: egate-homepage-service
