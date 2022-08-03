@@ -41,7 +41,7 @@ kind: Deployment
 metadata:
   name: egate-admin
   labels:
-    app: egate-admin
+    app: egate-admind
 spec:
   replicas: 3
   selector:
@@ -90,7 +90,7 @@ spec:
         - name: regcred
       containers:
       - name: socket
-        image: vcats/egate-socket:1.0.1
+        image: vcats/egate-socket:1.0.2
         env: 
           - name: BASEAPI
             value: "https://socket.e-gate.vn"
